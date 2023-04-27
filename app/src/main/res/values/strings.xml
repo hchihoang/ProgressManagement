@@ -3,4 +3,9 @@
     <string name="timeout_error">Quá thời gian kết nối máy chủ</string>
     <integer name="activity_anim_duration">300</integer>
     <integer name="activity_anim_duration_out">500</integer>
+    <string name="register_password_hint"><![CDATA[Mật khẩu<br/><font color=\'#DC2220\'><i>(ít nhất 6 ký tự)</i></font>]]></string>
+    <string name="login_hint_username"><u>ID</u></string>
+    <string name="login_password_hint">Mật khẩu</string>
+    <string name="btn_login_title">Đăng nhập</string>
+
 </resources>

@@ -2,28 +2,27 @@ package com.progress.management.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonSyntaxException
 import com.progress.management.R
-import com.progress.management.base.ViewController
+import com.progress.management.extension.enableFullScreen
 import com.progress.management.extension.toast
 import com.progress.management.network.NetworkCheckerInterceptor
 import com.progress.management.network.entity.RequestError
 import com.progress.management.utils.Define
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonSyntaxException
 import retrofit2.HttpException
 import java.io.IOException
-import java.lang.IllegalStateException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 
 abstract class BaseActivity : AppCompatActivity() {
 
-    private var viewController : ViewController? = null
+    private var viewController: ViewController? = null
 
-    fun getViewController() : ViewController {
-        if(viewController == null){
-            viewController = ViewController(layoutId,supportFragmentManager)
+    fun getViewController(): ViewController {
+        if (viewController == null) {
+            viewController = ViewController(layoutId, supportFragmentManager)
 
         }
         return viewController!!
@@ -32,18 +31,19 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutResId)
-        viewController = ViewController(layoutId,supportFragmentManager)
+        viewController = ViewController(layoutId, supportFragmentManager)
+        enableFullScreen()
         initView()
         initData()
         initListener()
     }
 
     override fun onBackPressed() {
-        if(viewController!= null && viewController?.currentFragment!=null){
-            if(viewController?.currentFragment?.backPressed() == true){
+        if (viewController != null && viewController?.currentFragment != null) {
+            if (viewController?.currentFragment?.backPressed() == true) {
                 super.onBackPressed()
             }
-        }else{
+        } else {
             super.onBackPressed()
         }
 
@@ -102,8 +102,8 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
 
-    protected abstract val layoutResId :  Int
-    protected abstract val layoutId :  Int
+    protected abstract val layoutResId: Int
+    protected abstract val layoutId: Int
     protected abstract fun initView()
     protected abstract fun initData()
     protected abstract fun initListener()

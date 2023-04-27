@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import com.progress.management.base.ViewController
@@ -25,6 +26,7 @@ abstract class BaseFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        activity?.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
         return LayoutInflater.from(context).inflate(layoutId, container, false)
     }
 
