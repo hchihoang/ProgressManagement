@@ -38,7 +38,7 @@
             <com.progress.management.custom.InputView
                 android:id="@+id/login_edt_username"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_40_dp"
+                android:layout_height="@dimen/margin_45_dp"
                 app:input_hint="@string/login_hint_username"
                 app:layout_constraintTop_toBottomOf="@+id/logo_app"
                 app:left_drawable="@null"
@@ -48,14 +48,12 @@
             <com.progress.management.custom.InputView
                 android:id="@+id/login_edt_password"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_40_dp"
+                android:layout_height="@dimen/margin_45_dp"
                 android:layout_marginTop="22dp"
                 app:input_hint="@string/login_password_hint"
                 app:input_type="password"
-                app:layout_constraintEnd_toEndOf="@+id/login_edt_username"
-                app:layout_constraintStart_toStartOf="@+id/login_edt_username"
-                app:layout_constraintTop_toBottomOf="@+id/login_edt_username"
                 app:left_drawable="@null"
+                app:padding_end="38"
                 app:margin_start="13"
                 app:type="login" />
 
@@ -65,7 +63,7 @@
                 android:elevation="0dp"
                 style="@style/roboto_medium_14dp"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/margin_40_dp"
+                android:layout_height="@dimen/margin_45_dp"
                 android:layout_marginTop="17dp"
                 android:background="@drawable/bg_btn_login"
                 android:gravity="center"

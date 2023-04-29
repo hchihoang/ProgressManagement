@@ -6,10 +6,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import com.progress.management.BuildConfig;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public abstract class Connection_Base {
     private static final String Tag = "Connection_Base";
@@ -19,25 +20,23 @@ public abstract class Connection_Base {
     private String ip;
     private String port;
     private String database;
-    protected Context context;
     protected boolean connectSuccess;
     protected boolean searchingIsDone;
     protected boolean networkIsError;
-    protected ProgressDialog pdialog;
+
     //    protected String tableName;
     private ConnectToServer connectToServer;
     private Connection conn = null;
 
-    public Connection_Base(Context context) {
+    public Connection_Base() {
         connectSuccess = true;
         searchingIsDone = false;
         networkIsError = false;
-        this.context = context;
-//            ip = Funtion.getDataNote(context, Variable.IP);
-//            port = Funtion.getDataNote(context, Variable.Port);
-//            user = Funtion.getDataNote(context, Variable.User);
-//            pass = Funtion.getDataNote(context, Variable.Pass);
-//            database = Funtion.getDataNote(context, Variable.Database);
+        ip = BuildConfig.BASE_URL;
+        port = BuildConfig.BASE_PORT;
+        user = BuildConfig.BASE_USER;
+        pass = BuildConfig.BASE_PASSWORK;
+        database = BuildConfig.BASE_DATABASE;
         connectionString = "jdbc:jtds:sqlserver://" + ip + ":" + port + "/" + database + ";user=" + user + ";password=" + pass;
         connectToServer = new ConnectToServer();
     }
@@ -65,20 +64,6 @@ public abstract class Connection_Base {
 
 //	protected abstract void getDataInTable(Statement stmt) throws SQLException;
 
-    private void startDialogProgress() {
-        if (getDialogProgressText() != null) {
-            pdialog = new ProgressDialog(context);
-            pdialog.setMessage(getDialogProgressText());
-            pdialog.setCanceledOnTouchOutside(false);
-            pdialog.setCancelable(false);
-            pdialog.show();
-            TextView message = (TextView) pdialog.findViewById(android.R.id.message);
-            //message.setTextColor(context.getResources().getColor(R.color.color_pmv_orange));
-        }
-    }
-
-    protected abstract String getDialogProgressText();
-
     public abstract void connectFailAction();
 
     public abstract void connectSuccessAction();
@@ -99,16 +84,11 @@ public abstract class Connection_Base {
 
         @Override
         protected void onPostExecute(Void searchingIsDone) {
-            if (pdialog != null) {
-                pdialog.dismiss();
-                pdialog = null;
-            }
             connectionFinish();
         }
 
         @Override
         protected void onPreExecute() {
-            startDialogProgress();
 
         }
 

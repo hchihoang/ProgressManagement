@@ -30,6 +30,7 @@
         android:id="@+id/edt_input"
         style="@style/roboto_regular_search"
         android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/margin_10_dp"
         android:layout_height="41dp"
         android:background="@null"
         android:inputType="text"

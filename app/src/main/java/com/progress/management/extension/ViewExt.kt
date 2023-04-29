@@ -1,21 +1,30 @@
 package com.progress.management.extension
 
+import android.app.DatePickerDialog
+import android.app.Dialog
 import android.content.Context
+import android.graphics.Color
 import android.graphics.Typeface
+import android.graphics.drawable.ColorDrawable
 import android.text.Editable
 import android.text.InputType
 import android.text.TextWatcher
 import android.view.*
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatEditText
-import androidx.core.view.WindowCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.core.view.WindowInsetsControllerCompat
+import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
+import com.progress.management.R
+import com.progress.management.utils.Constant
+import com.progress.management.utils.DateUtils
+import java.util.Calendar
+import java.util.Date
 
 fun View.visible() {
     visibility = View.VISIBLE
@@ -133,4 +142,40 @@ fun AppCompatActivity.enableFullScreen() {
     val decorView = window.decorView
     decorView.systemUiVisibility = (View.SYSTEM_UI_FLAG_LAYOUT_STABLE
             or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN)
+}
+
+fun ImageView.loadImageUrl(url: Any?) {
+    Glide.with(this.context)
+        .load(url)
+        .placeholder(R.drawable.img_default)
+        .error(R.drawable.img_default)
+        .centerCrop()
+        .into(this)
+}
+
+fun Dialog.showDatePickerDialog(
+    isSetMaxDate: Boolean = false,
+    beforeDate: Date,
+    context: Context,
+    callBack: (String) -> Unit
+) {
+    val newCalendar: Calendar = Calendar.getInstance()
+    newCalendar.time = beforeDate
+    val startTime = DatePickerDialog(
+        context, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+        { _, year, monthOfYear, dayOfMonth ->
+            val newDate: Calendar = Calendar.getInstance()
+            newDate.set(year, monthOfYear, dayOfMonth)
+            callBack(DateUtils.dateToString(newDate.time, Constant.DATE_FORMAT_2))
+        },
+        newCalendar.get(Calendar.YEAR),
+        newCalendar.get(Calendar.MONTH),
+        newCalendar.get(Calendar.DAY_OF_MONTH)
+    )
+    if (isSetMaxDate) {
+        startTime.datePicker.maxDate = Date().time
+    }
+    // an border xung dialog_date
+    startTime.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    startTime.show()
 }

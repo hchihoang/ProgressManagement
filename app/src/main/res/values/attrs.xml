@@ -17,6 +17,7 @@
         <attr name="type"/>
         <attr name="input_type"/>
         <attr name="padding_vertical" format="integer" />
+        <attr name="padding_end" format="integer" />
         <attr name="disable_paste" format="boolean" />
         <attr name="margin_start" format="integer" />
         <attr name="color_hint" format="color" />

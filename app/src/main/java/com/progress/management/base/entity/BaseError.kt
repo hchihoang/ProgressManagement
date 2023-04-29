@@ -1,3 +1,5 @@
 package com.progress.management.base.entity
 
-data class BaseError(var error: String, var code: Int) : Exception(error)
+import androidx.annotation.StringRes
+
+data class BaseError(@StringRes var error: Int, var code: Int = 1) : Exception("")

@@ -1,8 +1,10 @@
 package com.progress.management
 
 import com.progress.management.base.BaseActivity
+import com.progress.management.extension.onAvoidDoubleClick
 import com.progress.management.ui.login.LoginFragment
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.home_fragment.*
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
@@ -14,6 +16,7 @@ class MainActivity : BaseActivity() {
         get() = R.id.container
 
     override fun initListener() {
+
     }
 
     override fun initView() {

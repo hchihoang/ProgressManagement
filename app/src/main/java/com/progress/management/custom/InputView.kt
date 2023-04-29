@@ -72,6 +72,10 @@ class InputView(context: Context, attrs: AttributeSet?) :
                     val marginStart= attr.getInt(R.styleable.InputView_margin_start, 0)
                     edt_input.setPaddingRelative(marginStart.dpToPx,0,0,0)
                 }
+                if (attr.hasValue(R.styleable.InputView_padding_end)) {
+                    val paddingEnd = attr.getInt(R.styleable.InputView_padding_end, 0)
+                    edt_input.setPaddingRelative(edt_input.paddingStart,edt_input.paddingTop,paddingEnd.dpToPx, edt_input.paddingBottom)
+                }
                 if (attr.hasValue(R.styleable.InputView_input_hint)) {
                     edt_input.hint = attr.getString(R.styleable.InputView_input_hint)
                 }

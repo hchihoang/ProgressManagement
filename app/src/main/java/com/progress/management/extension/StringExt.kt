@@ -35,7 +35,12 @@ fun String.formatAge(): String {  // YYYY-MM-DD
     val currentYear = Calendar.getInstance().get(Calendar.YEAR)
     return "${(currentYear - year)} tuổi"
 }
-
+fun String?.formatString(): String {
+    if(this.isNullOrEmpty() || this == "NULL" || this == "null"){
+        return ""
+    }
+    return this
+}
 fun String.formatAgebyBirthday(): String {  // YYYY-MM-DD
     val year = this.substring(0, 4).toInt()
     val currentYear = Calendar.getInstance().get(Calendar.YEAR)

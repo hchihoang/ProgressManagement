@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:background="@color/md_indigo_50"
+    android:focusable="true">
+
+    <LinearLayout
+        android:id="@+id/ll_header_table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatCheckBox
+                android:id="@+id/cb_more"
+                android:button="@drawable/checkbox_selector"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginStart="@dimen/margin_8_dp"
+                android:text=""
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                style="@style/roboto_bold_16dp"
+                android:id="@+id/tv_product"
+                android:layout_weight="1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="@string/str_product" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_id"
+            style="@style/roboto_bold_16dp"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/str_id" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_time_line"
+            style="@style/roboto_bold_16dp"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/str_time_line" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date_start"
+            style="@style/roboto_bold_16dp"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/str_date_start" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_date_end"
+            style="@style/roboto_bold_16dp"
+            android:layout_width="75dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/str_date_end" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_progress"
+            style="@style/roboto_bold_16dp"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/str_progress_title" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/color_background" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_note"
+            style="@style/roboto_bold_16dp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/str_note" />
+    </LinearLayout>
+
+    <View
+        android:layout_marginStart="@dimen/margin_14_dp"
+        android:id="@+id/view_line1"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@id/ll_header_table"
+        android:background="@color/color_background" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginStart="@dimen/margin_14_dp"
+        app:layout_constraintTop_toBottomOf="@id/view_line1"
+        android:id="@+id/rcv_progress"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
