@@ -1,12 +1,15 @@
 package com.progress.management.ui.login
 
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.progress.management.R
 import com.progress.management.base.BaseFragment
 import com.progress.management.base.entity.BaseError
+import com.progress.management.entity.response.LoginResponse
 import com.progress.management.extension.onAvoidDoubleClick
 import com.progress.management.extension.toast
 import com.progress.management.ui.home.HomeFragment
+import com.progress.management.utils.DeviceUtil
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.login_fragment.*
 
@@ -33,8 +36,9 @@ class LoginFragment : BaseFragment() {
 
     override fun initListener() {
         btn_login.onAvoidDoubleClick {
-            //viewModel.login(login_edt_username.getText(), login_edt_password.getText())
-            getVC().replaceFragment(HomeFragment::class.java, null)
+            DeviceUtil.hideSoftKeyboard(activity)
+            viewModel.login(login_edt_username.getText(), login_edt_password.getText())
+            //getVC().replaceFragment(HomeFragment::class.java, null)
         }
         viewModel.loginResponse.observe(viewLifecycleOwner) {
             handleObjectResponse(it)
@@ -47,6 +51,10 @@ class LoginFragment : BaseFragment() {
         }
     }
     override fun <U> getObjectResponse(data: U) {
-//        getVC().replaceFragment(HomeFragment::class.java, null)
+        if(data is LoginResponse && !data.maNV.isNullOrEmpty()) {
+            getVC().replaceFragment(HomeFragment::class.java, null)
+        }else{
+            toast(getString(R.string.str_login_false))
+        }
     }
 }

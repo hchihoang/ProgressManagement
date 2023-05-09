@@ -104,6 +104,7 @@ class InputView(context: Context, attrs: AttributeSet?) :
                                 isShow = !isShow
                             }
                             edt_input.passwordType()
+                            edt_input.filters = arrayOf(InputFilter.LengthFilter(30))
                         }
                         TYPE_REGISTER_PASSWORD -> {
                             ic_show_hide_password.visible()
@@ -149,6 +150,7 @@ class InputView(context: Context, attrs: AttributeSet?) :
                 if (attr.hasValue(R.styleable.InputView_type)) {
                     when (attr.getInt(R.styleable.InputView_type, 0)) {
                         TYPE_LOGIN -> {
+                            edt_input.filters = arrayOf(InputFilter.LengthFilter(20))
 //                            bg_icon.background =
 //                                ContextCompat.getDrawable(context, R.drawable.bg_icon_edt_login)
                         }

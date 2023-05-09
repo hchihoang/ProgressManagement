@@ -45,10 +45,11 @@ public class Connection_Progress extends Connection_Base {
     public void callStoreProcedure(Connection conn) throws SQLException{
         // TODO Auto-generated method stub
         super.callStoreProcedure(conn);
-        String insertStoreProc = "{call [sp_sysTiendoSX_Chart_AD](?,?,?)}";
+        String insertStoreProc = "{call [sp_sysTiendoSX_Chart_AD1](?,?,?)}";
         CallableStatement callableStatement = conn.prepareCall(insertStoreProc);
         callableStatement.setString(1, dateRequest.getStartDate());
         callableStatement.setString(2, dateRequest.getEndDate());
+        callableStatement.setString(3, dateRequest.getMaNV());
         callableStatement.execute();
         ResultSet reset = callableStatement.getResultSet();
         if (reset != null){

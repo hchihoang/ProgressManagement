@@ -10,14 +10,16 @@ import com.progress.management.entity.response.ProgressResponse
 import com.progress.management.extension.ListResponse
 import com.progress.management.network.Connection_Progress
 import com.progress.management.network.DataCallback
+import com.progress.management.share_preference.HSBASharePref
 import com.progress.management.utils.DeviceUtil
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class ProgressViewModel @Inject constructor() : BaseViewModel() {
+class ProgressViewModel @Inject constructor(private val hsbaSharePref: HSBASharePref) : BaseViewModel() {
     var dataProgressResponse = ListResponse<ProgressResponse>()
     fun getDataProgress(data: DateRequest) {
+        data.maNV = hsbaSharePref.savedUser?.maNV
         dataProgressResponse.value = BaseListResponse<ProgressResponse>().loading()
         Connection_Progress(data,
             object : DataCallback<List<ProgressResponse>> {

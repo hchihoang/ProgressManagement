@@ -26,4 +26,5 @@
     <string name="str_error_get_data">Có lỗi trong quá trình tải dữ liệu, vui lòng thử lại!</string>
     <string name="str_error_connect_internet">Lỗi kết nối mạng, vui lòng kiểm tra lại!</string>
     <string name="str_validate_user_pass_work">Vui lòng nhập đầy đủ ID và mật khẩu!</string>
+    <string name="str_login_false">Đăng nhập thất bại, vui lòng thử lại!</string>
 </resources>

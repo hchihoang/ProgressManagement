@@ -51,4 +51,11 @@ class LoginViewModel @Inject constructor(private val hsbaSharePref: HSBASharePre
         ).execute()
     }
 
+    fun isLogin(): Boolean{
+        if(hsbaSharePref.savedUser?.maNV.isNullOrEmpty()){
+            return false
+        }
+        return true
+    }
+
 }

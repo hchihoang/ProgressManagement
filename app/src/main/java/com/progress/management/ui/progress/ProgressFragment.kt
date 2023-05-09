@@ -2,6 +2,8 @@ package com.progress.management.ui.progress
 
 import android.content.pm.ActivityInfo
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.progress.management.R
 import com.progress.management.base.BaseFragment
 import com.progress.management.base.adapter.ProgressAdapter
@@ -10,6 +12,7 @@ import com.progress.management.base.entity.BaseError
 import com.progress.management.entity.response.ProgressResponse
 import com.progress.management.extension.toast
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.android.synthetic.main.layout_base_recyclerview.view.*
 import kotlinx.android.synthetic.main.progress_fragment.header
 import kotlinx.android.synthetic.main.progress_fragment.rcv_progress
 import javax.inject.Inject
@@ -38,6 +41,8 @@ class ProgressFragment : BaseFragment() {
 
     override fun initView() {
         activity?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE
+        val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rcv_progress.layoutManager = layoutManager
         rcv_progress.adapter = adapter
     }
 

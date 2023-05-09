@@ -30,21 +30,21 @@ android {
         debug {
             //signingConfig signingConfigs.debug
             minifyEnabled false
-            buildConfigField("String", "BASE_URL", '"192.168.18.54"')
-            buildConfigField 'String', 'BASE_PORT', '"1433"'
-            buildConfigField 'String', 'BASE_USER', '"root"'
-            buildConfigField 'String', 'BASE_PASSWORK', '"123456"'
-            buildConfigField 'String', 'BASE_DATABASE', '"database"'
+            buildConfigField("String", "BASE_URL", '"115.79.198.245"')
+            buildConfigField 'String', 'BASE_PORT', '"1499"'
+            buildConfigField 'String', 'BASE_USER', '"KA"'
+            buildConfigField 'String', 'BASE_PASSWORK', '"KHACH@2023"'
+            buildConfigField 'String', 'BASE_DATABASE', '"KHACH_01"'
         }
         release {
 //            signingConfig signingConfigs.release
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", '"192.168.18.54"')
-            buildConfigField 'String', 'BASE_PORT', '"1433"'
-            buildConfigField 'String', 'BASE_USER', '"root"'
-            buildConfigField 'String', 'BASE_PASSWORK', '"123456"'
-            buildConfigField 'String', 'BASE_DATABASE', '"database"'
+            buildConfigField("String", "BASE_URL", '"115.79.198.245"')
+            buildConfigField 'String', 'BASE_PORT', '"1499"'
+            buildConfigField 'String', 'BASE_USER', '"KA"'
+            buildConfigField 'String', 'BASE_PASSWORK', '"KHACH@2023"'
+            buildConfigField 'String', 'BASE_DATABASE', '"KHACH_01"'
         }
     }
 

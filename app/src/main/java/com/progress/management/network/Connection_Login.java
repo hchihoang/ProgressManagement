@@ -44,16 +44,17 @@ public class Connection_Login extends Connection_Base {
         // TODO Auto-generated method stub
         super.callStoreProcedure(conn);
 
-        String insertStoreProc = "{call [sp_LOGIN](?,?)}";
+        String insertStoreProc = "{call [sp_sysLogin_AD](?,?,?)}";
         CallableStatement callableStatement = conn.prepareCall(insertStoreProc);
         callableStatement.setString(1, loginRequest.getUserName());
         callableStatement.setString(2, loginRequest.getPassWork());
+        callableStatement.setString(3, loginRequest.getPassWork());
         callableStatement.execute();
         ResultSet reset = callableStatement.getResultSet();
         if (reset != null){
             while(reset.next()){
-                loginResponse.setUsername(reset.getString("CAPTION"));
-                loginResponse.setMaNV(reset.getString("MANV"));
+                loginResponse.setUsername(reset.getString("ID"));
+                loginResponse.setMaNV(reset.getString("ID"));
                 connectSuccess = true;
             }
         }
