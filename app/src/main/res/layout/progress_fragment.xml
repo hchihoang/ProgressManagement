@@ -41,7 +41,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/roboto_bold_16dp"
-            android:layout_width="75dp"
+            android:layout_width="65dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/str_id" />

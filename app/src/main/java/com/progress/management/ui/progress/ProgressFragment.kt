@@ -47,6 +47,7 @@ class ProgressFragment : BaseFragment() {
     }
 
     override fun initData() {
+        adapter.clear()
         selectData()
     }
 

@@ -25,13 +25,13 @@
                 android:id="@+id/cb_more"
                 android:button="@drawable/checkbox_selector"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:layout_marginStart="@dimen/margin_8_dp"
+                android:layout_marginStart="@dimen/margin_5_dp"
                 android:text=""
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
             <androidx.appcompat.widget.AppCompatTextView
-                style="@style/roboto_bold_16dp"
+                style="@style/roboto_bold_14dp_weight600"
                 android:id="@+id/tv_product"
                 android:layout_weight="1"
                 android:layout_width="match_parent"
@@ -47,8 +47,8 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_id"
-            style="@style/roboto_bold_16dp"
-            android:layout_width="75dp"
+            style="@style/roboto_bold_14dp_weight600"
+            android:layout_width="65dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/str_id" />
@@ -60,7 +60,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_time_line"
-            style="@style/roboto_bold_16dp"
+            style="@style/roboto_bold_14dp_weight600"
             android:layout_width="75dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -73,7 +73,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date_start"
-            style="@style/roboto_bold_16dp"
+            style="@style/roboto_bold_14dp_weight600"
             android:layout_width="75dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -86,7 +86,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_date_end"
-            style="@style/roboto_bold_16dp"
+            style="@style/roboto_bold_14dp_weight600"
             android:layout_width="75dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -99,7 +99,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_progress"
-            style="@style/roboto_bold_16dp"
+            style="@style/roboto_bold_14dp_weight600"
             android:layout_width="60dp"
             android:layout_height="match_parent"
             android:gravity="center"
@@ -112,7 +112,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tv_note"
-            style="@style/roboto_bold_16dp"
+            style="@style/roboto_bold_14dp_weight600"
             android:layout_width="100dp"
             android:layout_height="match_parent"
             android:gravity="center"

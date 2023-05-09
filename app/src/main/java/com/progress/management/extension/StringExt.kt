@@ -4,6 +4,8 @@ import android.content.ClipboardManager
 import android.content.Context
 import android.content.res.Resources
 import com.progress.management.BuildConfig
+import com.progress.management.utils.Constant
+import com.progress.management.utils.DateUtils
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
@@ -40,6 +42,17 @@ fun String?.formatString(): String {
         return ""
     }
     return this
+}
+fun String?.formatDateString(): String {
+    if(this.isNullOrEmpty() || this == "NULL" || this == "null"){
+        return ""
+    }
+    try {
+        val date = DateUtils.stringToDate(this, Constant.DATE_FORMAT_3)
+        return DateUtils.dateToString(date, Constant.DATE_FORMAT_2)
+    }catch (e: Exception){
+        return ""
+    }
 }
 fun String.formatAgebyBirthday(): String {  // YYYY-MM-DD
     val year = this.substring(0, 4).toInt()
