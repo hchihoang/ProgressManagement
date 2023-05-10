@@ -91,7 +91,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/color_text_title</item>
-        <item name="android:textSize">@dimen/margin_18_dp</item>
+        <item name="android:textSize">@dimen/margin_16_dp</item>
         <item name="android:fontWeight">700</item>
         <item name="lineHeight">21dp</item>
     </style>

@@ -114,6 +114,7 @@
             android:id="@+id/tv_note"
             style="@style/roboto_bold_14dp_weight600"
             android:layout_width="100dp"
+            android:textColor="@color/md_red_600"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/str_note" />

@@ -3,18 +3,20 @@ package com.progress.management.ui.progress
 import android.content.pm.ActivityInfo
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.progress.management.R
 import com.progress.management.base.BaseFragment
 import com.progress.management.base.adapter.ProgressAdapter
 import com.progress.management.base.custom.dialog.SelectTimeProgressDialog
 import com.progress.management.base.entity.BaseError
+import com.progress.management.entity.request.DateRequest
 import com.progress.management.entity.response.ProgressResponse
 import com.progress.management.extension.toast
+import com.progress.management.utils.Constant
+import com.progress.management.utils.DateUtils
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.layout_base_recyclerview.view.*
 import kotlinx.android.synthetic.main.progress_fragment.header
 import kotlinx.android.synthetic.main.progress_fragment.rcv_progress
+import java.util.Date
 import javax.inject.Inject
 
 
@@ -48,7 +50,11 @@ class ProgressFragment : BaseFragment() {
 
     override fun initData() {
         adapter.clear()
-        selectData()
+        val dataRequest = DateRequest(
+            DateUtils.dateToString(Date(), Constant.DATE_FORMAT_1),
+            DateUtils.dateToString(Date(), Constant.DATE_FORMAT_1)
+        )
+        viewModel.getDataProgress(dataRequest)
     }
 
     override fun initListener() {
