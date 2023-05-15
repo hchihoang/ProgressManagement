@@ -50,6 +50,7 @@ data class ProgressResponse(
 	var DATE_Duration: String? = null,
 
 	var isCheck: Boolean = true,
+	var isShow: Boolean = true,
 
 	var listDetailProgressRespons: ArrayList<ProgressResponse> = arrayListOf()
 )

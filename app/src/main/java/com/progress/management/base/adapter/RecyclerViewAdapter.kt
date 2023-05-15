@@ -282,6 +282,10 @@ abstract class RecyclerViewAdapter(var context: Context?, enableSelectedMode: Bo
         return listWrapperModels!![position].viewType
     }
 
+    fun <T> getAllItem(classType: Class<T>): List<T> {
+        return listWrapperModels!!.map { classType.cast(it.model)!! }
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val viewHolder = solvedOnCreateViewHolder(parent, viewType)
         setClickStateBackground(viewHolder!!.itemView, viewType, false)

@@ -15,6 +15,9 @@ import android.widget.TextView.OnEditorActionListener
 import androidx.core.content.ContextCompat
 import com.progress.management.R
 import com.progress.management.extension.*
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.progress_fragment.input_search_project
 import kotlinx.android.synthetic.main.view_input.view.*
 
 
@@ -140,9 +143,9 @@ class InputView(context: Context, attrs: AttributeSet?) :
 //                            layout_input.background =layout_input
 //                                ContextCompat.getDrawable(context, R.drawable.bg_input_search)
                             bg_icon.setPadding(
-                                12.dpToPx, 8.dpToPx, 8.dpToPx, 4.dpToPx
+                                4.dpToPx, 8.dpToPx, 8.dpToPx, 4.dpToPx
                             )
-                            edt_input.setPadding(0, 0, 41.dpToPx, 0)
+                            edt_input.setPadding(0, 0, 10.dpToPx, 0)
                             edt_input.imeOptions = EditorInfo.IME_ACTION_SEARCH
                         }
                     }
@@ -214,11 +217,33 @@ class InputView(context: Context, attrs: AttributeSet?) :
     fun setOnEditorActionListener(action: (text: String) -> Unit) {
         edt_input.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                action(edt_input.text.toString().trim())
+                edt_input.hideKeyboard()
+                action(edt_input.text.toString())
                 return@OnEditorActionListener true
             }
             false
         })
+    }
+
+    fun setOnFocusChange(action: (hasFocus: Boolean) -> Unit){
+        edt_input.setOnFocusChangeListener { _, hasFocus ->
+            action(hasFocus)
+        }
+    }
+
+    fun getFocus(): Boolean{
+       return edt_input.isFocused
+    }
+
+    fun setObservableFromView(action: (text: String) -> Unit) {
+        edt_input.observableFromView()
+            .debounce(500, java.util.concurrent.TimeUnit.MILLISECONDS)
+            .distinctUntilChanged()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe {
+                action(edt_input.text.toString().trim())
+            }
     }
 
     fun setPaddingHorizontal(padding: Float) {

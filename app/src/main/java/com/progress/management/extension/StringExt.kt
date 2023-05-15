@@ -1,14 +1,14 @@
 package com.progress.management.extension
 
-import android.content.ClipboardManager
-import android.content.Context
 import android.content.res.Resources
-import com.progress.management.BuildConfig
 import com.progress.management.utils.Constant
 import com.progress.management.utils.DateUtils
 import java.io.File
+import java.text.Normalizer
 import java.text.SimpleDateFormat
 import java.util.*
+import java.util.regex.Pattern
+
 
 fun Int.formatGender(): String {
     return when {
@@ -125,5 +125,15 @@ fun Int.formatIntToTime(): String{
         "$minutesFormatter : $secondFormatter"
     }else{
         "$hourFormatter :  $minutesFormatter : $secondFormatter"
+    }
+}
+
+fun String.flattenToAscii(): String {
+    val pattern = Pattern.compile("\\p{InCombiningDiacriticalMarks}+")
+    return try {
+        val temp = Normalizer.normalize(this, Normalizer.Form.NFD)
+        pattern.matcher(temp).replaceAll("").replace("Đ", "D").replace("đ", "d")
+    } catch (e: java.lang.Exception) {
+        ""
     }
 }

@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
+    android:id="@+id/cl_item"
     android:background="@color/md_indigo_50"
     android:focusable="true">
 

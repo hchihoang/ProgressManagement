@@ -23,6 +23,8 @@ import com.bumptech.glide.Glide
 import com.progress.management.R
 import com.progress.management.utils.Constant
 import com.progress.management.utils.DateUtils
+import io.reactivex.Observable
+import io.reactivex.subjects.PublishSubject
 import java.util.Calendar
 import java.util.Date
 
@@ -178,4 +180,22 @@ fun Dialog.showDatePickerDialog(
     // an border xung dialog_date
     startTime.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
     startTime.show()
+}
+
+fun EditText.observableFromView(): Observable<String> {
+    val subject = PublishSubject.create<String>()
+    addTextChangedListener(object : TextWatcher {
+        override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+
+        override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+
+        }
+
+        override fun afterTextChanged(text: Editable?) {
+            subject.onNext(text.toString())
+        }
+    })
+    return subject
 }

@@ -14,6 +14,7 @@ import com.progress.management.extension.inflate
 import com.progress.management.extension.invisible
 import com.progress.management.extension.visible
 import kotlinx.android.synthetic.main.item_progress.view.cb_more
+import kotlinx.android.synthetic.main.item_progress.view.cl_item
 import kotlinx.android.synthetic.main.item_progress.view.rcv_progress
 import kotlinx.android.synthetic.main.item_progress.view.tv_date_end
 import kotlinx.android.synthetic.main.item_progress.view.tv_date_start
@@ -35,31 +36,41 @@ class ProgressAdapter @Inject constructor(context: Context) :
         val item = getItem(position, ProgressResponse::class.java)
         item?.let {
             holder.itemView.apply {
-                cb_more.isChecked = it.isCheck
-                tv_product.text = it.NAME.formatString()
-                tv_id.text = it.ID_MAY.formatString()
-                tv_time_line.text = it.TNGAY.formatString()
-                tv_date_start.text = it.START_DATE.formatDateString()
-                tv_date_end.text = it.END_DATE.formatDateString()
-                tv_progress.text = it.TIENDO.formatString()
-                tv_note.text = it.GHICHU.formatString()
-                if (it.listDetailProgressRespons.size > 0){
-                    rcv_progress.visible()
-                    val adapter = ProgressAdapter(context)
-                    val layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-                    rcv_progress.layoutManager = layoutManager
-                    rcv_progress.adapter = adapter
-                    adapter.refresh(it.listDetailProgressRespons)
-                }else{
-                    rcv_progress.gone()
-                    cb_more.invisible()
-                }
-                cb_more.setOnCheckedChangeListener { _, isChecked ->
-                    it.isCheck = isChecked
-                    if (isChecked) {
+                if(!it.isShow){
+                    val paramsView = cl_item.layoutParams
+                    paramsView.height = 0
+                    cl_item.layoutParams = paramsView
+                }else {
+                    val paramsView = cl_item.layoutParams
+                    paramsView.height = ViewGroup.LayoutParams.WRAP_CONTENT
+                    cl_item.layoutParams = paramsView
+                    cb_more.isChecked = it.isCheck
+                    tv_product.text = it.NAME.formatString()
+                    tv_id.text = it.ID_MAY.formatString()
+                    tv_time_line.text = it.TNGAY.formatString()
+                    tv_date_start.text = it.START_DATE.formatDateString()
+                    tv_date_end.text = it.END_DATE.formatDateString()
+                    tv_progress.text = it.TIENDO.formatString()
+                    tv_note.text = it.GHICHU.formatString()
+                    if (it.listDetailProgressRespons.size > 0) {
                         rcv_progress.visible()
+                        val adapter = ProgressAdapter(context)
+                        val layoutManager =
+                            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+                        rcv_progress.layoutManager = layoutManager
+                        rcv_progress.adapter = adapter
+                        adapter.refresh(it.listDetailProgressRespons)
                     } else {
                         rcv_progress.gone()
+                        cb_more.invisible()
+                    }
+                    cb_more.setOnCheckedChangeListener { _, isChecked ->
+                        it.isCheck = isChecked
+                        if (isChecked) {
+                            rcv_progress.visible()
+                        } else {
+                            rcv_progress.gone()
+                        }
                     }
                 }
             }
