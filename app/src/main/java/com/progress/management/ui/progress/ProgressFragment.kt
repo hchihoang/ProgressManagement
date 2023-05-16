@@ -91,7 +91,10 @@ class ProgressFragment : BaseFragment() {
         input_search_project.setObservableFromView {
             if(input_search_project.getFocus()) {
                 input_search_project.hideKeyboard()
-                input_search_id.setText("")
+                if(input_search_id.getTextNotTrim().isNotEmpty()) {
+                    input_search_id.setText("")
+                    img_icon_close_search_id.gone()
+                }
                 if (it.isNotEmpty()) {
                     img_icon_close_search_view.visible()
                 } else {
@@ -115,7 +118,10 @@ class ProgressFragment : BaseFragment() {
         input_search_id.setObservableFromView {
             if(input_search_id.getFocus()) {
                 input_search_id.hideKeyboard()
-                input_search_project.setText("")
+                if(input_search_project.getTextNotTrim().isNotEmpty()) {
+                    input_search_project.setText("")
+                    img_icon_close_search_view.gone()
+                }
                 if (it.isNotEmpty()) {
                     img_icon_close_search_id.visible()
                 } else {
